@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace ConsoleApp1
 {
@@ -67,10 +68,37 @@ namespace ConsoleApp1
     //}
     internal class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            Form f = new Form();
-            Application.Run(f);
+            Form form = new Form();
+            form.Text = "Calculator";
+            form.BackColor = System.Drawing.Color.AliceBlue;
+            form.Width *= 2;
+            form.Height *= 2;
+            form.FormBorderStyle = FormBorderStyle.FixedSingle;
+            form.MaximizeBox = false;
+            form.Cursor = Cursors.SizeAll;
+            form.StartPosition = FormStartPosition.CenterScreen;
+
+            TextBox res = new TextBox();
+            res.Text = "0";
+            res.Dock = DockStyle.Fill;
+            res.TextAlign = HorizontalAlignment.Right;
+            res.Font = new Font("Arial", 24);
+            form.Controls.Add(res);
+
+            for(int i = 0; i < 24; i++)
+            {
+                Button btn = new Button();
+                btn.Text = i.ToString();
+                btn.Size = new Size(20, 20);
+                btn.Top = 10;
+                btn.Left = 10;
+                form.Controls.Add((btn));
+            }
+
+            Application.Run(form);
         }
+        
     }
 }
