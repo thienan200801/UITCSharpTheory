@@ -87,14 +87,27 @@ namespace ConsoleApp1
             res.Font = new Font("Arial", 24);
             form.Controls.Add(res);
 
-            for(int i = 0; i < 24; i++)
+            Button[,] btn = new Button[4, 6];
+      
+            for(int i = 0; i < 4; i++)
             {
-                Button btn = new Button();
-                btn.Text = i.ToString();
-                btn.Size = new Size(20, 20);
-                btn.Top = 10;
-                btn.Left = 10;
-                form.Controls.Add((btn));
+                for(int j = 0; j < 6; j++)
+                {
+                    //btn[i,j].Text = i.ToString();
+                    //btn[i,j].Size = new Size(20, 20);                
+                    form.Controls.Add((btn[i,j]));
+                }
+            }
+            btn[0, 0].Top = 50;
+            btn[0, 0].Left = 20;
+            int i2, j2;
+            for(i2 = 0; i2 < 4; i2++)
+            {
+                for(j2 = 0; j2 < 6; j2++)
+                {
+                    btn[i2, j2].Left = btn[i2 - 1, j2 - 1].Left + 20;
+                }
+                btn[i2, j2].Top = btn[i2 - 1, j2 - 1].Top + 20;
             }
 
             Application.Run(form);
